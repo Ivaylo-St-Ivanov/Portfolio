@@ -1,0 +1,16 @@
+// mobile phones - 320/479 
+// tablets - 480/767 
+// small laptops and large tablets - 768/1024
+
+$breakpoints: (
+    small: 30em,        // 480px
+    medium: 48em,       // 768px
+    large: 62.5em,      // 1000px
+    x-large: 75em       // 1200px
+);
+
+@mixin display($size) {
+    @media (max-width: map-get($breakpoints, $size)) {
+        @content
+    }
+}
