@@ -1,0 +1,46 @@
+@use './global-styles/main.scss' as gs;
+
+.wrapper {
+    position: relative;
+
+    &>div {
+        width: 100%;
+        height: 100vh;
+
+        &>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        background: rgb(7, 5, 10);
+        background: radial-gradient(circle, rgba(7, 5, 10, 0.22591043253238796) 3%, rgba(7, 5, 10, 0.6292717770702031) 37%, rgba(7, 5, 10, 0.8253502084427521) 73%);
+    }
+
+    &__title {
+        position: absolute;
+        top: 0;
+        @include gs.flex(column, center, center);
+        color: gs.$main-color;
+        text-shadow: 1px 1px 4px white;
+
+        &>div {
+            &>span {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            &>h1 {
+                font-size: 4rem;
+            }
+
+            &>h2 {
+                font-size: 3rem;
+            }
+        }
+    }
+}
