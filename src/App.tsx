@@ -1,4 +1,5 @@
 import { FaRegCopyright } from 'react-icons/fa6';
+import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
 import './App.scss';
 
@@ -10,6 +11,14 @@ function App() {
                 <input type="button" value="About Me" />
                 <input type="button" value="Portfolio" />
             </header>
+
+            <aside>
+                <span><MdArrowBackIos /> Contact Me</span>
+            </aside>
+
+            <aside>
+                <span>Tech Stack <MdArrowForwardIos /></span>
+            </aside>
 
             <main className="wrapper">
                 <div>
