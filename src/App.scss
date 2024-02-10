@@ -1,5 +1,28 @@
 @use './global-styles/main.scss' as gs;
 
+header {
+    position: absolute;
+    z-index: 1;
+    padding: 1rem;
+    @include gs.flex(none, center, none);
+    width: 100%;
+
+    &>input {
+        background: unset;
+        border: unset;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+            color: yellow;
+        }
+
+        &:first-of-type {
+            margin-right: 2rem;
+        }
+    }
+}
+
 .wrapper {
     position: relative;
 
@@ -43,4 +66,11 @@
             }
         }
     }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    @include gs.flex(none, center, none);
 }
