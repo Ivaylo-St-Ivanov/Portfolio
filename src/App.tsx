@@ -1,9 +1,16 @@
+import { useState } from 'react';
 import { FaRegCopyright, FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
+import AboutMe from './components/AboutMe/AboutMe';
 import './App.scss';
 
 function App() {
+    const [isAboutMeClick, setIsAboutMeClick] = useState<boolean>(false);
+
+    const onAboutMeClick = () => {
+        setIsAboutMeClick(state => !state);
+    };
 
     return (
         <>
@@ -13,7 +20,7 @@ function App() {
                     <a href="https://github.com/Ivaylo-St-Ivanov" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
                 </div>
                 <div>
-                    <span>About Me</span>
+                    <span onClick={onAboutMeClick}>About Me</span>
                     <span>Portfolio</span>
                 </div>
             </header>
@@ -40,6 +47,8 @@ function App() {
                     </div>
                 </div>
             </main>
+
+            {isAboutMeClick && <AboutMe />}
 
             <footer>
                 <span><FaRegCopyright /> Ivaylo Ivanov</span>
