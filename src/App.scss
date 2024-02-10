@@ -3,15 +3,28 @@
 header {
     position: absolute;
     z-index: 1;
-    padding: 1rem;
-    @include gs.flex(none, center, none);
+    padding: 1rem 12rem;
+    @include gs.flex(none, space-between, none);
     width: 100%;
-    font-size: 0.9rem;
 
-    &>input {
+    &>div>a {
+        color: white;
+        font-size: 1.5rem;
+
+        &:hover {
+            color: yellow;
+        }
+
+        &:first-of-type {
+            margin-right: 0.75rem;
+        }
+    }
+
+    &>div>span {
         background: unset;
         border: unset;
         color: white;
+        font-size: 0.9rem;
         cursor: pointer;
 
         &:hover {
@@ -30,10 +43,13 @@ aside {
     height: 100vh;
     @include gs.flex(none, none, center);
     font-size: 0.9rem;
-    cursor: pointer;
 
-    &:hover {
-        color: yellow;
+    &>span {
+        cursor: pointer;
+
+        &:hover {
+            color: yellow;
+        }
     }
 
     &:first-of-type {

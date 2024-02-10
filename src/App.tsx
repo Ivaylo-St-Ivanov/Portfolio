@@ -1,4 +1,4 @@
-import { FaRegCopyright } from 'react-icons/fa6';
+import { FaRegCopyright, FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
 import './App.scss';
@@ -8,8 +8,14 @@ function App() {
     return (
         <>
             <header>
-                <input type="button" value="About Me" />
-                <input type="button" value="Portfolio" />
+                <div>
+                    <a href="https://www.linkedin.com/in/ivaylo-st-ivanov" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                    <a href="https://github.com/Ivaylo-St-Ivanov" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+                </div>
+                <div>
+                    <span>About Me</span>
+                    <span>Portfolio</span>
+                </div>
             </header>
 
             <aside>
