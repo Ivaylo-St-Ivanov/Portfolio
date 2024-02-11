@@ -11,8 +11,10 @@ header {
         color: white;
         font-size: 1.5rem;
 
-        &:hover {
-            color: yellow;
+        &>svg:hover {
+            color: gs.$main-color;
+            transition: 1s;
+            animation: icon-spin forwards 1s linear;
         }
 
         &:first-of-type {
@@ -21,14 +23,14 @@ header {
     }
 
     &>div>span {
-        background: unset;
-        border: unset;
-        color: white;
         font-size: 0.9rem;
+        display: inline-block;
         cursor: pointer;
 
         &:hover {
-            color: yellow;
+            color: gs.$main-color;
+            transition: 1s;
+            animation: zoom 0.5s both;
         }
 
         &:first-of-type {
@@ -45,10 +47,13 @@ aside {
     font-size: 0.9rem;
 
     &>span {
+        padding: 0.5rem 0;
         cursor: pointer;
 
         &:hover {
-            color: yellow;
+            color: gs.$main-color;
+            transition: 1s;
+            animation: icon-spin forwards 1s linear;
         }
     }
 
@@ -114,4 +119,24 @@ footer {
     @include gs.flex(none, center, none);
     font-size: 0.8rem;
     margin-bottom: 0.25rem;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes icon-spin {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
 }

@@ -29,6 +29,7 @@
 
             &:hover {
                 color: gs.$main-color;
+                animation: zoom 0.5s both;
             }
         }
 
@@ -42,6 +43,10 @@
                 object-fit: cover;
                 border-radius: 0.5rem;
                 box-shadow: 0 0 0.5rem white;
+
+                &:hover {
+                    animation: zoom 0.5s both;
+                }
             }
         }
     }
@@ -58,5 +63,15 @@
         opacity: 1;
         transform: translateY(0);
         transition: 0.5s;
+    }
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.3);
     }
 }
