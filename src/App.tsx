@@ -48,7 +48,7 @@ function App() {
                 </div>
             </main>
 
-            {isAboutMeClick && <AboutMe />}
+            {isAboutMeClick && <AboutMe isAboutMeClick={isAboutMeClick} setIsAboutMeClick={setIsAboutMeClick} />}
 
             <footer>
                 <span><FaRegCopyright /> Ivaylo Ivanov</span>
