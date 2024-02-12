@@ -1,0 +1,29 @@
+@use '../../global-styles/main' as gs;
+
+.tech-stack__wrapper {
+    position: absolute;
+    top: 5rem;
+    margin: 0 9rem;
+    backdrop-filter: blur(0.5rem);
+    box-shadow: 0 0 0.5rem white;
+    padding: 4rem;
+    border-radius: 0.75rem;
+    max-height: 80vh;
+    @include gs.flex(column, none, center);
+    gap: 2rem;
+    animation: showTechStack 1s forwards;
+}
+
+@keyframes showTechStack {
+    0% {
+        opacity: 0;
+        transform: translate(-50%);
+        transition: 0.5s;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(50%);
+        transition: 0.5s;
+    }
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
 import { aboutMeContent, myPhotos } from '../../utils/data';
+import { mouseEvent } from '../../utils/utils';
 import './AboutMe.scss';
 
 interface AboutMeProps {
@@ -14,21 +15,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ isAboutMeClick, setIsAboutMeClick }) 
     const popupRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
-        const onClickOutside = (e: MouseEvent) => {
-            if (popupRef.current && !popupRef.current.contains(e.target as HTMLElement)) {
-                setIsAboutMeClick(false);
-            }
-        };
-
-        if (isAboutMeClick) {
-            document.addEventListener('mousedown', onClickOutside);
-        } else {
-            document.removeEventListener('mousedown', onClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener('mousedown', onClickOutside);
-        };
+        mouseEvent(popupRef, isAboutMeClick, setIsAboutMeClick);
     }, [isAboutMeClick, setIsAboutMeClick]);
 
     const onClickNextPhoto = () => {

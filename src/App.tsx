@@ -3,14 +3,12 @@ import { FaRegCopyright, FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
 import AboutMe from './components/AboutMe/AboutMe';
+import TechStack from './components/TechStack/TechStack';
 import './App.scss';
 
 function App() {
     const [isAboutMeClick, setIsAboutMeClick] = useState<boolean>(false);
-
-    const onAboutMeClick = () => {
-        setIsAboutMeClick(state => !state);
-    };
+    const [isTechStackClick, setIsTechStackClick] = useState<boolean>(false);
 
     return (
         <>
@@ -20,7 +18,7 @@ function App() {
                     <a href="https://github.com/Ivaylo-St-Ivanov" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
                 </div>
                 <div>
-                    <span onClick={onAboutMeClick}>About Me</span>
+                    <span onClick={() => setIsAboutMeClick(true)}>About Me</span>
                     <span>Portfolio</span>
                 </div>
             </header>
@@ -30,7 +28,7 @@ function App() {
             </aside>
 
             <aside>
-                <span>Tech Stack <MdArrowForwardIos /></span>
+                <span onClick={() => setIsTechStackClick(true)}>Tech Stack <MdArrowForwardIos /></span>
             </aside>
 
             <main className="wrapper">
@@ -49,6 +47,8 @@ function App() {
             </main>
 
             {isAboutMeClick && <AboutMe isAboutMeClick={isAboutMeClick} setIsAboutMeClick={setIsAboutMeClick} />}
+
+            {isTechStackClick && <TechStack isTechStackClick={isTechStackClick} setIsTechStackClick={setIsTechStackClick} />}
 
             <footer>
                 <span><FaRegCopyright /> Ivaylo Ivanov</span>

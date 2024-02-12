@@ -11,7 +11,7 @@
     max-height: 80vh;
     display: flex;
     gap: 2rem;
-    animation: showContent 1s forwards;
+    animation: showAboutMe 1s forwards;
 
     &__content {
         @include gs.flex(none, none, center);
@@ -52,7 +52,7 @@
     }
 }
 
-@keyframes showContent {
+@keyframes showAboutMe {
     0% {
         opacity: 0;
         transform: translateY(110%);
