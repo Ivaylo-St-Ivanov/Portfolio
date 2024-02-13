@@ -8,11 +8,11 @@ header {
     width: 100%;
 
     &>div>a {
-        color: white;
+        color: gs.$main-color;
         font-size: 1.5rem;
 
         &>svg:hover {
-            color: gs.$main-color;
+            color: yellow;
             transition: 1s;
             animation: icon-spin forwards 1s linear;
         }
@@ -28,7 +28,7 @@ header {
         cursor: pointer;
 
         &:hover {
-            color: gs.$main-color;
+            color: yellow;
             transition: 1s;
             animation: zoom 0.5s both;
         }
@@ -51,7 +51,7 @@ aside {
         cursor: pointer;
 
         &:hover {
-            color: gs.$main-color;
+            color: yellow;
             transition: 1s;
             animation: icon-spin forwards 1s linear;
         }
@@ -110,6 +110,38 @@ aside {
             }
         }
     }
+
+    &__toast-message {
+        position: absolute;
+        top: 3rem;
+        right: 3rem;
+        width: 16rem !important;
+        height: 6rem !important;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        @include gs.flex(none, center, center);
+        gap: 1rem;
+        font-size: 0.9rem;
+        font-weight: bold;
+        letter-spacing: 0.1rem;
+        animation-name: showToastModal;
+        animation-duration: 0.5s;
+
+        &>svg {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.success {
+    border: 2px solid gs.$main-color;
+    background-color: rgba(144, 238, 144, 0.311);
+}
+
+.warning {
+    border: 2px solid yellow;
+    background-color: rgba(255, 255, 0, 0.301);
+    color: yellow;
 }
 
 footer {
@@ -138,5 +170,19 @@ footer {
 
     to {
         transform: rotateY(360deg);
+    }
+}
+
+@keyframes showToastModal {
+    0% {
+        opacity: 0;
+        transform: translate(110%);
+        transition: opacity 0.5s, transform 0.5s;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+        transition: opacity 0.5s, transform 0.5s;
     }
 }

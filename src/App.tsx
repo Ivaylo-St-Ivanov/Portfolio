@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaRegCopyright, FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
+import { IoWarningOutline } from "react-icons/io5";
+import { TiTick } from "react-icons/ti";
 
 import AboutMe from './components/AboutMe/AboutMe';
 import ContactMe from './components/ContactMe/ContactMe';
@@ -10,7 +12,18 @@ import './App.scss';
 function App() {
     const [isAboutMeClick, setIsAboutMeClick] = useState<boolean>(false);
     const [isContactMeClick, setIsContactMeClick] = useState<boolean>(false);
+    const [toastMessage, setToastMessage] = useState<string>('');
     const [isTechStackClick, setIsTechStackClick] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (toastMessage) {
+            const timer = setTimeout(() => {
+                setToastMessage('');
+            }, 3000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [toastMessage]);
 
     return (
         <>
@@ -46,11 +59,19 @@ function App() {
                         <h2>JS Web Developer</h2>
                     </div>
                 </div>
+
+                {toastMessage && (
+                    <div className={`wrapper__toast-message ${toastMessage.includes('Successful sent') ? 'success' : 'warning'}`}>
+                        {toastMessage.includes('Successful sent') && <TiTick />}
+                        {toastMessage.includes('required') && <IoWarningOutline />}
+                        <span>{toastMessage}</span>
+                    </div>
+                )}
             </main>
 
             {isAboutMeClick && <AboutMe isAboutMeClick={isAboutMeClick} setIsAboutMeClick={setIsAboutMeClick} />}
 
-            {isContactMeClick && <ContactMe isContactMeClick={isContactMeClick} setIsContactMeClick={setIsContactMeClick} />}
+            {isContactMeClick && <ContactMe isContactMeClick={isContactMeClick} setIsContactMeClick={setIsContactMeClick} setToastMessage={setToastMessage} />}
 
             {isTechStackClick && <TechStack isTechStackClick={isTechStackClick} setIsTechStackClick={setIsTechStackClick} />}
 

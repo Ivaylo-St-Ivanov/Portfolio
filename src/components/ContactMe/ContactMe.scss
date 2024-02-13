@@ -62,6 +62,11 @@
                 transition: 0.7s;
             }
         }
+
+        &>.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
     }
 }
 
