@@ -3,11 +3,13 @@ import { FaRegCopyright, FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
 import AboutMe from './components/AboutMe/AboutMe';
+import ContactMe from './components/ContactMe/ContactMe';
 import TechStack from './components/TechStack/TechStack';
 import './App.scss';
 
 function App() {
     const [isAboutMeClick, setIsAboutMeClick] = useState<boolean>(false);
+    const [isContactMeClick, setIsContactMeClick] = useState<boolean>(false);
     const [isTechStackClick, setIsTechStackClick] = useState<boolean>(false);
 
     return (
@@ -24,7 +26,7 @@ function App() {
             </header>
 
             <aside>
-                <span><MdArrowBackIos /> Contact Me</span>
+                <span onClick={() => setIsContactMeClick(true)}><MdArrowBackIos /> Contact Me</span>
             </aside>
 
             <aside>
@@ -33,7 +35,7 @@ function App() {
 
             <main className="wrapper">
                 <div>
-                    <img src="/images/image5.jpeg" alt="Ivaylo's photo" />
+                    <img src="/images/photo4.jpeg" alt="Ivaylo's photo" />
                 </div>
                 <div className="wrapper__overlay"></div>
 
@@ -47,6 +49,8 @@ function App() {
             </main>
 
             {isAboutMeClick && <AboutMe isAboutMeClick={isAboutMeClick} setIsAboutMeClick={setIsAboutMeClick} />}
+
+            {isContactMeClick && <ContactMe isContactMeClick={isContactMeClick} setIsContactMeClick={setIsContactMeClick} />}
 
             {isTechStackClick && <TechStack isTechStackClick={isTechStackClick} setIsTechStackClick={setIsTechStackClick} />}
 
