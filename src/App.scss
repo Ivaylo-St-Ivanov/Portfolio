@@ -67,83 +67,6 @@ aside {
     }
 }
 
-.wrapper {
-    position: relative;
-
-    &>div {
-        width: 100%;
-        height: 100vh;
-
-        &>img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-
-    &__overlay {
-        position: absolute;
-        top: 0;
-        background: rgb(7, 5, 10);
-        background: radial-gradient(circle, rgba(7, 5, 10, 0.22591043253238796) 3%, rgba(7, 5, 10, 0.6292717770702031) 37%, rgba(7, 5, 10, 0.8253502084427521) 73%);
-    }
-
-    &__title {
-        position: absolute;
-        top: 0;
-        @include gs.flex(column, center, center);
-        color: black;
-        text-shadow: 0px 0px 2px gs.$main-color;
-
-        &>div {
-            &>span {
-                font-size: 1.5rem;
-                font-weight: bold;
-            }
-
-            &>h1 {
-                font-size: 4rem;
-            }
-
-            &>h2 {
-                font-size: 3rem;
-            }
-        }
-    }
-
-    &__toast-message {
-        position: absolute;
-        top: 3rem;
-        right: 3rem;
-        width: 16rem !important;
-        height: 6rem !important;
-        border-radius: 0.5rem;
-        padding: 1rem;
-        @include gs.flex(none, center, center);
-        gap: 1rem;
-        font-size: 0.9rem;
-        font-weight: bold;
-        letter-spacing: 0.1rem;
-        animation-name: showToastModal;
-        animation-duration: 0.5s;
-
-        &>svg {
-            font-size: 1.5rem;
-        }
-    }
-}
-
-.success {
-    border: 2px solid gs.$main-color;
-    background-color: rgba(144, 238, 144, 0.311);
-}
-
-.warning {
-    border: 2px solid yellow;
-    background-color: rgba(255, 255, 0, 0.301);
-    color: yellow;
-}
-
 footer {
     position: absolute;
     bottom: 0;
@@ -170,19 +93,5 @@ footer {
 
     to {
         transform: rotateY(360deg);
-    }
-}
-
-@keyframes showToastModal {
-    0% {
-        opacity: 0;
-        transform: translate(110%);
-        transition: opacity 0.5s, transform 0.5s;
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-        transition: opacity 0.5s, transform 0.5s;
     }
 }
