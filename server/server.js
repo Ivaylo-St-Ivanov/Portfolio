@@ -44,6 +44,24 @@ router.post('/contact', (req, res) => {
             res.json({ status: 'Fail' });
         } else {
             res.json({ status: 'Successful sent' });
+
+            contactEmail.sendMail({
+                from: process.env.EMAIL_USER,
+                to: email,
+                subject: 'Submission was successful',
+                html: `<p>Thank you for contacting me!</p>
+                       <p>Form details:</p>
+                       <p>Name: ${name}</p>
+                       <p>Email: ${email}</p>
+                       <p>Subject: ${subject}</p>
+                       <p>Message: ${message}</p>`
+            }, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Message sent' + info.response);
+                }
+            });
         }
     });
 });
