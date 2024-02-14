@@ -21,10 +21,10 @@ const ContactMe: React.FC<ContactMeProps> = ({ isContactMeClick, setIsContactMeC
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-        const name = formData.get('name') as string
-        const email = formData.get('email') as string
-        const subject = formData.get('subject') as string
-        const message = formData.get('message') as string
+        const name = formData.get('name') as string;
+        const email = formData.get('email') as string;
+        const subject = formData.get('subject') as string;
+        const message = formData.get('message') as string;
 
         if (name == '') {
             setToastMessage('Name is required!');
@@ -37,7 +37,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ isContactMeClick, setIsContactMeC
             return;
         }
 
-        let details = {
+        const details = {
             name,
             email,
             subject,
@@ -46,16 +46,16 @@ const ContactMe: React.FC<ContactMeProps> = ({ isContactMeClick, setIsContactMeC
 
         setStatus('Sending...');
 
-        let response = await fetch('http://localhost:5000/contact', {
+        const response = await fetch('http://localhost:5000/contact', {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(details)
         });
         setStatus('send message');
 
-        let result = await response.json();
+        const result = await response.json();
         setToastMessage(result.status);
         setIsContactMeClick(false);
     };

@@ -12,6 +12,7 @@
     @include gs.flex(column, none, center);
     gap: 2rem;
     animation: showContactMe 1s forwards;
+    overflow: scroll;
 
     &>h3 {
         color: black;

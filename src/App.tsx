@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 import { FaRegCopyright, FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
-import { IoWarningOutline } from "react-icons/io5";
-import { TiTick } from "react-icons/ti";
+import { IoWarningOutline } from 'react-icons/io5';
+import { TiTick } from 'react-icons/ti';
 
 import AboutMe from './components/AboutMe/AboutMe';
 import ContactMe from './components/ContactMe/ContactMe';
 import TechStack from './components/TechStack/TechStack';
 import './App.scss';
+import Portfolio from './components/Portfolio/Portfolio';
 
 function App() {
     const [isAboutMeClick, setIsAboutMeClick] = useState<boolean>(false);
+    const [isPortfolioClick, setIsPortfolioClick] = useState<boolean>(false);
     const [isContactMeClick, setIsContactMeClick] = useState<boolean>(false);
     const [toastMessage, setToastMessage] = useState<string>('');
     const [isTechStackClick, setIsTechStackClick] = useState<boolean>(false);
@@ -34,7 +36,7 @@ function App() {
                 </div>
                 <div>
                     <span onClick={() => setIsAboutMeClick(true)}>About Me</span>
-                    <span>Portfolio</span>
+                    <span onClick={() => setIsPortfolioClick(true)}>Portfolio</span>
                 </div>
             </header>
 
@@ -70,6 +72,8 @@ function App() {
             </main>
 
             {isAboutMeClick && <AboutMe isAboutMeClick={isAboutMeClick} setIsAboutMeClick={setIsAboutMeClick} />}
+
+            {isPortfolioClick && <Portfolio isPortfolioClick={isPortfolioClick} setIsPortfolioClick={setIsPortfolioClick} />}
 
             {isContactMeClick && <ContactMe isContactMeClick={isContactMeClick} setIsContactMeClick={setIsContactMeClick} setToastMessage={setToastMessage} />}
 
