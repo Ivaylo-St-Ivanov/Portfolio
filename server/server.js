@@ -7,6 +7,15 @@ const nodemailer = require('nodemailer');
 
 dotenv.config();
 
+router.get('/config', (req, res) => {
+    const config = {
+        baseUrl: process.env.BACK4APP_BASE_URL,
+        appId: process.env.BACK4APP_APP_ID,
+        apiKey: process.env.BACK4APP_API_KEY
+    };
+    res.json(config);
+});
+
 const contactEmail = nodemailer.createTransport({
     service: 'gmail',
     auth: {
