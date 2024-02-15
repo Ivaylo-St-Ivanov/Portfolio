@@ -7,6 +7,14 @@ header {
     @include gs.flex(none, space-between, none);
     width: 100%;
 
+    @include gs.display(medium) {
+        padding: 1rem 6rem;
+    }
+
+    @include gs.display(small) {
+        padding: 1rem 2rem;
+    }
+
     &>div>a {
         color: gs.$main-color;
         font-size: 1.5rem;
