@@ -17,8 +17,3 @@ export const mouseEvent = (ref: RefObject<HTMLElement>, state: boolean, setState
         document.removeEventListener('mousedown', onClickOutside);
     };
 };
-
-export const getConfigData = async () => {
-    const response = await fetch('http://localhost:5000/config');
-    return response.json();
-};

@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 
-import { getConfigData, mouseEvent } from '../../utils/utils';
-import { IConfig, IProject } from '../../utils/interfaces';
+import { mouseEvent } from '../../utils/utils';
 
-import Loading from '../Loading/Loading';
 import './Portfolio.scss';
 
 interface PortfolioProps {
@@ -12,21 +9,38 @@ interface PortfolioProps {
     setIsPortfolioClick: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+interface IConfig {
+    baseUrl: string
+    appId: string
+    apiKey: string
+}
+
+interface IProject {
+    objectId: string
+    projectName: string
+    screenshot: { url: string }
+    repoLink: string
+    demoLink?: string
+    techStack?: string
+}
+
 const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioClick }) => {
-    const [projects, setProjects] = useState<IProject[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [projects, setProjects] = useState<IProject[]>([]);
+    const [hovered, setHovered] = useState<string>('');
     const popupRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
-        const fetchConfig = async () => {
+        const fetchProjects = async () => {
             try {
-                const config: IConfig = await getConfigData();
+                const responseConfig = await fetch('http://localhost:5000/config');
+                const configData: IConfig = await responseConfig.json();
 
-                const response = await fetch(config.baseUrl, {
+                const response = await fetch(configData.baseUrl, {
                     method: 'GET',
                     headers: {
-                        'X-Parse-Application-Id': config.appId,
-                        'X-Parse-REST-API-Key': config.apiKey
+                        'X-Parse-Application-Id': configData.appId,
+                        'X-Parse-REST-API-Key': configData.apiKey
                     }
                 });
                 const projectsData = await response.json();
@@ -39,7 +53,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
             }
         };
 
-        fetchConfig();
+        fetchProjects();
     }, []);
 
     useEffect(() => {
@@ -48,20 +62,35 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
 
     return (
         <section ref={popupRef} className="portfolio-wrapper">
-            {!loading && <h3>My Projects</h3>}
+            {!loading && <h3>Projects</h3>}
 
             {loading && (
-                <Loading />
+                <div className="portfolio-wrapper__loading">
+                    <span>Loading...</span>
+                </div>
             )}
 
             <div className="portfolio-wrapper__projects">
                 {projects && projects.map(p => (
-                    <Link key={p.objectId} to={`/project/${p.objectId}`} className="portfolio-wrapper__projects__box">
+                    <article 
+                        key={p.objectId} 
+                        onMouseEnter={() => setHovered(p.objectId)} 
+                        onMouseLeave={() => setHovered('')} 
+                        onTouchStart={() => setHovered(p.objectId)}
+                        className="portfolio-wrapper__projects__box"
+                    >
                         <img src={p.screenshot.url} alt="App screenshot" />
-                        <div className="portfolio-wrapper__projects__box__overlay">
-                            <div>Details</div>
-                        </div>
-                    </Link>
+                        {hovered == p.objectId && (
+                            <div className="portfolio-wrapper__projects__box__overlay">
+                                <h3>{p.projectName}</h3>
+                                <p>{p.techStack}</p>
+                                <div className="portfolio-wrapper__projects__box__overlay__buttons">
+                                    {p.demoLink && <a href={p.demoLink} target="_blank" rel="noopener noreferrer">Demo</a>}
+                                    <a href={p.repoLink} target="_blank" rel="noopener noreferrer">Repo</a>
+                                </div>
+                            </div>
+                        )}
+                    </article>
                 ))}
 
                 <article className="portfolio-wrapper__projects__box"></article>

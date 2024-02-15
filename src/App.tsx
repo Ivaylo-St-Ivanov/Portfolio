@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa6';
+import { FaGithub, FaLinkedin, FaRegCopyright } from 'react-icons/fa6';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
 import MainPage from './components/MainPage/MainPage';
@@ -7,7 +7,6 @@ import AboutMe from './components/AboutMe/AboutMe';
 import Portfolio from './components/Portfolio/Portfolio';
 import ContactMe from './components/ContactMe/ContactMe';
 import TechStack from './components/TechStack/TechStack';
-import Footer from './components/Footer/Footer';
 import './App.scss';
 
 function App() {
@@ -58,7 +57,9 @@ function App() {
 
             {isTechStackClick && <TechStack isTechStackClick={isTechStackClick} setIsTechStackClick={setIsTechStackClick} />}
 
-            <Footer />
+            <footer>
+                <span><FaRegCopyright /> Ivaylo Ivanov</span>
+            </footer>
         </>
     );
 }

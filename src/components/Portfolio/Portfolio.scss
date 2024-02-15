@@ -20,6 +20,13 @@
         margin: 1rem 0 2rem 0;
     }
 
+    &__loading {
+        width: 100%;
+        @include gs.flex(none, center, none);
+        font-size: 1.75rem;
+        font-weight: bold;
+    }
+
     &__projects {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -62,24 +69,24 @@
                 top: 0;
                 width: 100%;
                 height: 100%;
-                transition: all 1s ease;
+                @include gs.flex(column, space-evenly, center);
+                background-color: gs.$secondary-color;
+                text-shadow: 1px 1px 1px black;
+                animation: showOverlay 1s both;
 
-                &:hover {
-                    background-color: gs.$secondary-color;
-                    transition: 1s;
-                }
+                &__buttons>a {
+                    color: gs.$main-color;
+                    border: 2px solid gs.$main-color;
+                    border-radius: 1.5rem;
+                    padding: 0 1rem;
 
-                &>div {
-                    width: 100%;
-                    height: 100%;
-                    @include gs.flex(none, center, center);
-                    color: transparent;
-                    font-size: 2rem;
-                    font-weight: bold;
+                    &:first-of-type {
+                        margin-right: 0.5rem;
+                    }
 
                     &:hover {
-                        color: black;
-                        transition: 1s;
+                        color: yellow;
+                        transition: 0.7s;
                     }
                 }
             }
@@ -108,5 +115,15 @@
 
     100% {
         transform: scale(1.02);
+    }
+}
+
+@keyframes showOverlay {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.9;
     }
 }

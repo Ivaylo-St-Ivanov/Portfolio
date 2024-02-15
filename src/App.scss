@@ -67,6 +67,15 @@ aside {
     }
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    @include gs.flex(none, center, none);
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
 @keyframes zoom {
     0% {
         transform: scale(1);
