@@ -1,0 +1,8 @@
+@use '../../global-styles/main' as gs;
+
+.loading-wrapper {
+    width: 100%;
+    @include gs.flex(none, center, none);
+    font-size: 1.75rem;
+    font-weight: bold;
+}

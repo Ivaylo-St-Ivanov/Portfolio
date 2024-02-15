@@ -20,13 +20,6 @@
         margin: 1rem 0 2rem 0;
     }
 
-    &__loading {
-        width: 100%;
-        @include gs.flex(none, center, none);
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-
     &__projects {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -36,7 +29,6 @@
         &__box {
             border-radius: 0.5rem;
             border: 0.25rem solid black;
-            cursor: pointer;
             position: relative;
             transition: all 1s ease;
 
@@ -73,7 +65,7 @@
                 transition: all 1s ease;
 
                 &:hover {
-                    background-color: rgba(116, 169, 81, 0.806);
+                    background-color: gs.$secondary-color;
                     transition: 1s;
                 }
 

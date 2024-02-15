@@ -1,0 +1,10 @@
+@use '../../global-styles/main' as gs;
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    @include gs.flex(none, center, none);
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
