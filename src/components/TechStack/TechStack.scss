@@ -3,7 +3,8 @@
 .tech-stack__wrapper {
     position: absolute;
     top: 5rem;
-    margin: 0 9rem;
+    margin-left: 20rem;
+    margin-right: 2rem;
     backdrop-filter: blur(0.5rem);
     box-shadow: 0 0 0.5rem gs.$main-color;
     padding: 4rem;
@@ -12,6 +13,20 @@
     @include gs.flex(column, none, center);
     gap: 2rem;
     animation: showTechStack 1s forwards;
+
+    @include gs.display(x-large) {
+        margin-left: 10rem;
+    }
+
+    @include gs.display(large) {
+        margin: 0 1rem;
+        padding: 4rem 1rem;
+        z-index: 1;
+    }
+
+    @media (max-height: 30rem) and (orientation: landscape) {
+        margin: 0 2rem;
+    }
 
     &>h3 {
         color: black;
@@ -28,7 +43,7 @@
 
     100% {
         opacity: 1;
-        transform: translate(50%);
+        transform: translate(0%);
         transition: 0.5s;
     }
 }

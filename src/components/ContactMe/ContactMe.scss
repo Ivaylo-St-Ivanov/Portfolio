@@ -13,6 +13,23 @@
     gap: 2rem;
     animation: showContactMe 1s forwards;
     overflow: scroll;
+    z-index: 1;
+
+    @include gs.display(medium) {
+        margin: 0 3rem;
+        width: 80vw;
+    }
+
+    @include gs.display(small) {
+        margin: 0 1rem;
+        width: 90vw;
+        padding: 4rem 1rem;
+    }
+
+    @media (max-height: 30rem) and (orientation: landscape) {
+        top: 3rem;
+        padding: 2rem;
+    }
 
     &>h3 {
         color: black;
@@ -23,6 +40,10 @@
         @include gs.flex(column, none, none);
         gap: 0.25rem;
         width: 50vw;
+
+        @include gs.display(small) {
+            width: 80vw;
+        }
 
         &>label {
             color: lightgreen;
