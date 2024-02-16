@@ -41,6 +41,19 @@
             text-shadow: 0px 0px 2px gs.$main-color;
             margin-bottom: 1rem;
         }
+
+        &>p:first-of-type {
+            width: 100%;
+            text-align: left;
+        }
+        
+        &>p {
+            // white-space: pre-wrap;
+            white-space: pre-line;
+            // overflow-wrap: break-word;
+            font-family: monospace;
+            // tab-size: 4;
+        }
     }
 
     &__photos {
@@ -51,10 +64,11 @@
             color: lightgreen;
             margin: 0.5rem 0;
             cursor: pointer;
+            transition: all 1s ease;
 
             &:hover {
                 color: gs.$main-color;
-                animation: zoom 0.5s both;
+                transform: scale(1.4);
             }
         }
 
@@ -73,9 +87,10 @@
                 object-fit: cover;
                 border-radius: 0.5rem;
                 box-shadow: 0 0 0.5rem white;
+                transition: all 1.2s ease;
 
                 &:hover {
-                    animation: zoom 0.5s both;
+                    transform: scale(1.2);
                 }
             }
         }
@@ -93,15 +108,5 @@
         opacity: 1;
         transform: translateY(0);
         transition: 0.5s;
-    }
-}
-
-@keyframes zoom {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1.3);
     }
 }

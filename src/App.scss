@@ -19,14 +19,17 @@ header {
         color: gs.$main-color;
         font-size: 1.5rem;
 
-        &>svg:hover {
-            color: yellow;
-            transition: 1s;
-            animation: icon-spin forwards 1s linear;
+        &>svg {
+            transition: all 1.2s ease;
+
+            &:hover {
+                color: yellow;
+                transform: rotateY(360deg);
+            }
         }
 
         &:first-of-type {
-            margin-right: 0.75rem;
+            margin-right: 1rem;
         }
     }
 
@@ -34,11 +37,13 @@ header {
         font-size: 0.9rem;
         display: inline-block;
         cursor: pointer;
+        // transition: transform 750ms;
+        // will-change: transform;
+        transition: all 1s ease;
 
         &:hover {
             color: yellow;
-            transition: 1s;
-            animation: zoom 0.5s both;
+            transform: translateY(0.5rem);
         }
 
         &:first-of-type {
@@ -57,7 +62,7 @@ aside {
     &>span {
         padding: 0.5rem 0;
         cursor: pointer;
-        transition: all 1s ease;
+        transition: all 1.2s ease;
 
         &:hover {
             color: yellow;
@@ -83,16 +88,6 @@ footer {
     @include gs.flex(none, center, none);
     font-size: 0.8rem;
     margin-bottom: 0.25rem;
-}
-
-@keyframes zoom {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1.2);
-    }
 }
 
 @keyframes icon-spin {

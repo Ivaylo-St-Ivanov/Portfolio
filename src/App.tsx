@@ -9,12 +9,58 @@ import ContactMe from './components/ContactMe/ContactMe';
 import TechStack from './components/TechStack/TechStack';
 import './App.scss';
 
+interface IConfig {
+    baseUrl: string
+    appId: string
+    apiKey: string
+}
+
+export interface IProject {
+    objectId: string
+    projectName: string
+    screenshot: { url: string }
+    repoLink: string
+    demoLink?: string
+    techStack?: string
+}
+
 function App() {
+    const [aboutMeContent, setAboutMeContent] = useState<string>('');
+    const [projects, setProjects] = useState<IProject[]>([]);
     const [isAboutMeClick, setIsAboutMeClick] = useState<boolean>(false);
     const [isPortfolioClick, setIsPortfolioClick] = useState<boolean>(false);
     const [isContactMeClick, setIsContactMeClick] = useState<boolean>(false);
     const [toastMessage, setToastMessage] = useState<string>('');
     const [isTechStackClick, setIsTechStackClick] = useState<boolean>(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responseConfig = await fetch('http://localhost:5000/config');
+                const configData: IConfig = await responseConfig.json();
+
+                const options = {
+                    method: 'GET',
+                    headers: {
+                        'X-Parse-Application-Id': configData.appId,
+                        'X-Parse-REST-API-Key': configData.apiKey
+                    }
+                };
+
+                const responseAboutMe = await fetch(`${configData.baseUrl}/AboutMe`, options);
+                const aboutMeData = await responseAboutMe.json();
+                setAboutMeContent(aboutMeData.results[0].aboutMe);
+
+                const responseProjects = await fetch(`${configData.baseUrl}/Projects`, options);
+                const projectsData = await responseProjects.json();
+                setProjects(projectsData.results.reverse());
+            } catch (err) {
+                console.error('Error fetching data: ', err);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     useEffect(() => {
         if (toastMessage) {
@@ -49,9 +95,9 @@ function App() {
 
             <MainPage toastMessage={toastMessage} />
 
-            {isAboutMeClick && <AboutMe isAboutMeClick={isAboutMeClick} setIsAboutMeClick={setIsAboutMeClick} />}
+            {isAboutMeClick && <AboutMe isAboutMeClick={isAboutMeClick} setIsAboutMeClick={setIsAboutMeClick} aboutMeContent={aboutMeContent} />}
 
-            {isPortfolioClick && <Portfolio isPortfolioClick={isPortfolioClick} setIsPortfolioClick={setIsPortfolioClick} />}
+            {isPortfolioClick && <Portfolio isPortfolioClick={isPortfolioClick} setIsPortfolioClick={setIsPortfolioClick} projects={projects} />}
 
             {isContactMeClick && <ContactMe isContactMeClick={isContactMeClick} setIsContactMeClick={setIsContactMeClick} setToastMessage={setToastMessage} />}
 

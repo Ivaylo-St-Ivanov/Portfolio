@@ -12,6 +12,7 @@
     max-height: 80vh;
     animation: showPortfolio 1s forwards;
     overflow: scroll;
+    z-index: 1;
 
     &>h3 {
         color: black;
@@ -23,13 +24,6 @@
     &>p {
         text-align: center;
         margin-bottom: 3rem;
-    }
-
-    &__loading {
-        width: 100%;
-        @include gs.flex(none, center, none);
-        font-size: 1.75rem;
-        font-weight: bold;
     }
 
     &__projects {
@@ -59,7 +53,7 @@
             }
 
             &:hover {
-                animation: zoomArticle 0.7s both;
+                transform: scale(1.03);
             }
 
             &>img {
@@ -75,15 +69,26 @@
                 width: 100%;
                 height: 100%;
                 @include gs.flex(column, space-evenly, center);
-                background-color: gs.$secondary-color;
+                background-color: rgba(128, 128, 128, 0.818);
                 text-shadow: 1px 1px 1px black;
-                animation: showOverlay 1s both;
+                opacity: 0;
+                transition: all 1.5s ease;
+                
+                &:hover {
+                    opacity: 1;
+                }
+
+                &>p {
+                    text-align: center;
+                }
 
                 &__buttons>a {
-                    color: gs.$main-color;
+                    color: yellow;
+                    background-color: gray;
                     border: 2px solid gs.$main-color;
                     border-radius: 1.5rem;
                     padding: 0 1rem;
+                    box-shadow: 0 0 0.5rem white;
                     transition: all 1s ease;
 
                     &:first-of-type {
@@ -91,8 +96,8 @@
                     }
 
                     &:hover {
-                        color: yellow;
-                        transition: 0.7s;
+                        color: green;
+                        box-shadow: unset;
                     }
                 }
             }
@@ -111,25 +116,5 @@
         opacity: 1;
         transform: translateY(0);
         transition: 0.5s;
-    }
-}
-
-@keyframes zoomArticle {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1.02);
-    }
-}
-
-@keyframes showOverlay {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0.9;
     }
 }
