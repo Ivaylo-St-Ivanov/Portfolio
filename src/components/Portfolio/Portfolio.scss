@@ -20,6 +20,11 @@
         margin: 1rem 0 2rem 0;
     }
 
+    &>p {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
     &__loading {
         width: 100%;
         @include gs.flex(none, center, none);
@@ -79,6 +84,7 @@
                     border: 2px solid gs.$main-color;
                     border-radius: 1.5rem;
                     padding: 0 1rem;
+                    transition: all 1s ease;
 
                     &:first-of-type {
                         margin-right: 0.5rem;

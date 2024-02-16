@@ -35,6 +35,12 @@
     &__content {
         @include gs.flex(column, none, center);
         overflow: scroll;
+        
+        &>h3 {
+            color: black;
+            text-shadow: 0px 0px 2px gs.$main-color;
+            margin-bottom: 1rem;
+        }
     }
 
     &__photos {

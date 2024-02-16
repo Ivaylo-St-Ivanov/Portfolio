@@ -28,7 +28,10 @@ const AboutMe: React.FC<AboutMeProps> = ({ isAboutMeClick, setIsAboutMeClick }) 
 
     return (
         <section ref={popupRef} className="about-me__wrapper">
-            <article className="about-me__wrapper__content">{aboutMeContent}</article>
+            <article className="about-me__wrapper__content">
+                <h3>About Me</h3>
+                {aboutMeContent}
+            </article>
 
             <div className="about-me__wrapper__photos">
                 <IoIosArrowUp onClick={onClickPrevPhoto} />

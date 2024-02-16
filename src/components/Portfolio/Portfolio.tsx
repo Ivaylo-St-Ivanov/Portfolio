@@ -62,7 +62,12 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
 
     return (
         <section ref={popupRef} className="portfolio-wrapper">
-            {!loading && <h3>Projects</h3>}
+            {!loading && (
+                <>
+                    <h3>Projects</h3>
+                    <p>Here you can see a part of my projects and also projects collaborating with other people.</p>
+                </>
+            )}
 
             {loading && (
                 <div className="portfolio-wrapper__loading">
@@ -72,10 +77,10 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
 
             <div className="portfolio-wrapper__projects">
                 {projects && projects.map(p => (
-                    <article 
-                        key={p.objectId} 
-                        onMouseEnter={() => setHovered(p.objectId)} 
-                        onMouseLeave={() => setHovered('')} 
+                    <article
+                        key={p.objectId}
+                        onMouseEnter={() => setHovered(p.objectId)}
+                        onMouseLeave={() => setHovered('')}
                         onTouchStart={() => setHovered(p.objectId)}
                         className="portfolio-wrapper__projects__box"
                     >

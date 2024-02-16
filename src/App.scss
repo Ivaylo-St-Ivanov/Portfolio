@@ -57,6 +57,7 @@ aside {
     &>span {
         padding: 0.5rem 0;
         cursor: pointer;
+        transition: all 1s ease;
 
         &:hover {
             color: yellow;
