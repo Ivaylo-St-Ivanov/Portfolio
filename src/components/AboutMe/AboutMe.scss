@@ -1,96 +1,105 @@
 @use '../../global-styles/main' as gs;
 
-.about-me__wrapper {
+.container {
     position: absolute;
-    top: 5rem;
-    margin: 0 9rem;
-    backdrop-filter: blur(0.5rem);
-    box-shadow: 0 0 0.5rem gs.$main-color;
-    padding: 4rem;
-    border-radius: 0.75rem;
-    max-height: 80vh;
-    display: flex;
-    gap: 2rem;
-    animation: showAboutMe 1s ease-out;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    @include gs.flex(none, center, center);
 
-    @include gs.display(large) {
-        margin: 0 2rem;
+    &__about-me__wrapper {
+        position: absolute;
+        top: 5rem;
+        backdrop-filter: blur(0.5rem);
+        box-shadow: 0 0 0.5rem gs.$main-color;
+        padding: 4rem;
+        border-radius: 0.75rem;
+        width: 80vw;
+        max-height: 80vh;
+        display: flex;
+        gap: 2rem;
         z-index: 1;
-    }
-
-    @include gs.display(medium) {
-        flex-direction: column;
-    }
-
-    @include gs.display(small) {
-        padding: 2rem;
-    }
-
-    @media (max-height: 30rem) and (orientation: landscape) {
-        top: 3rem;
-        padding: 2.5rem;
-        flex-direction: unset;
-    }
-
-    &__content {
-        @include gs.flex(column, none, center);
-        overflow: scroll;
-        
-        &>h3 {
-            color: black;
-            text-shadow: 0px 0px 2px gs.$main-color;
-            margin-bottom: 1rem;
+        animation: showAboutMe 1s ease-out;
+    
+        @include gs.display(large) {
+            margin: 0 2rem;
+            z-index: 1;
         }
-
-        &>p:first-of-type {
-            width: 100%;
-            text-align: left;
+    
+        @include gs.display(medium) {
+            flex-direction: column;
         }
-        
-        &>p {
-            // white-space: pre-wrap;
-            white-space: pre-line;
-            // overflow-wrap: break-word;
-            font-family: monospace;
-            // tab-size: 4;
+    
+        @include gs.display(small) {
+            padding: 2rem;
         }
-    }
-
-    &__photos {
-        @include gs.flex(column, space-evenly, center);
-
-        &>svg {
-            font-size: 1.5rem;
-            color: lightgreen;
-            margin: 0.5rem 0;
-            cursor: pointer;
-            transition: all 1s ease;
-
-            &:hover {
-                color: gs.$main-color;
-                transform: scale(1.4);
+    
+        @media (max-height: 30rem) and (orientation: landscape) {
+            top: 3rem;
+            padding: 2.5rem;
+            flex-direction: unset;
+        }
+    
+        &__content {
+            @include gs.flex(column, none, center);
+            overflow: scroll;
+            
+            &>h3 {
+                color: black;
+                text-shadow: 0px 0px 2px gs.$main-color;
+                margin-bottom: 1rem;
             }
-        }
-
-        &>div {
-            width: 12rem;
-            height: 12rem;
-
-            @media (max-height: 30rem) and (orientation: landscape) {
-                width: 9rem;
-                height: 9rem;
-            }
-
-            &>img {
+    
+            &>p:first-of-type {
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 0.5rem;
-                box-shadow: 0 0 0.5rem white;
-                transition: all 1.2s ease;
-
+                text-align: left;
+            }
+            
+            &>p {
+                // white-space: pre-wrap;
+                white-space: pre-line;
+                // overflow-wrap: break-word;
+                font-family: monospace;
+                // tab-size: 4;
+            }
+        }
+    
+        &__photos {
+            @include gs.flex(column, space-evenly, center);
+    
+            &>svg {
+                font-size: 1.5rem;
+                color: lightgreen;
+                margin: 0.5rem 0;
+                cursor: pointer;
+                transition: all 1s ease;
+    
                 &:hover {
-                    transform: scale(1.2);
+                    color: gs.$main-color;
+                    transform: scale(1.4);
+                }
+            }
+    
+            &>div {
+                width: 12rem;
+                height: 12rem;
+    
+                @media (max-height: 30rem) and (orientation: landscape) {
+                    width: 9rem;
+                    height: 9rem;
+                }
+    
+                &>img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 0.5rem;
+                    box-shadow: 0 0 0.5rem white;
+                    transition: all 1.2s ease;
+    
+                    &:hover {
+                        transform: scale(1.2);
+                    }
                 }
             }
         }

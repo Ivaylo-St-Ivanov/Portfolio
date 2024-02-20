@@ -28,24 +28,26 @@ const AboutMe: React.FC<AboutMeProps> = ({ isAboutMeClick, setIsAboutMeClick, ab
     };
 
     return (
-        <section ref={popupRef} className="about-me__wrapper">
-            <article className="about-me__wrapper__content">
-                <h3>About Me</h3>
-                <p>&nbsp;&nbsp;&nbsp;Hello!</p>
-                <p>&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;{aboutMeContent}</p>
-            </article>
+        <div className="container">
+            <section ref={popupRef} className="container__about-me__wrapper">
+                <article className="container__about-me__wrapper__content">
+                    <h3>About Me</h3>
+                    <p>&nbsp;&nbsp;&nbsp;Hello!</p>
+                    <p>&nbsp;&nbsp;&nbsp;</p>
+                    <p>&nbsp;&nbsp;&nbsp;{aboutMeContent}</p>
+                </article>
 
-            <div className="about-me__wrapper__photos">
-                <IoIosArrowUp onClick={onClickPrevPhoto} />
+                <div className="container__about-me__wrapper__photos">
+                    <IoIosArrowUp onClick={onClickPrevPhoto} />
 
-                <div>
-                    <img src={myPhotos[currentPhotoIndex]} alt="Ivaylo's photo" />
+                    <div>
+                        <img src={myPhotos[currentPhotoIndex]} alt="Ivaylo's photo" />
+                    </div>
+
+                    <IoIosArrowDown onClick={onClickNextPhoto} />
                 </div>
-
-                <IoIosArrowDown onClick={onClickNextPhoto} />
-            </div>
-        </section>
+            </section>
+        </div>
     );
 };
 

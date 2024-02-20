@@ -2,7 +2,7 @@
 
 header {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     padding: 1rem 12rem;
     @include gs.flex(none, space-between, none);
     width: 100%;
