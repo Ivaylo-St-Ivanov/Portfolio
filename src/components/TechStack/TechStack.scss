@@ -12,7 +12,7 @@
     max-height: 80vh;
     @include gs.flex(column, none, center);
     gap: 2rem;
-    animation: showTechStack 1s forwards;
+    animation: showTechStack 1s ease-out;
 
     @include gs.display(x-large) {
         margin-left: 10rem;

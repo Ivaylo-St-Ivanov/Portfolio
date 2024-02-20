@@ -11,7 +11,7 @@
     max-height: 80vh;
     @include gs.flex(column, none, center);
     gap: 2rem;
-    animation: showContactMe 1s forwards;
+    animation: showContactMe 1s ease-out;
     overflow: scroll;
     z-index: 1;
 

@@ -11,7 +11,7 @@
     max-height: 80vh;
     display: flex;
     gap: 2rem;
-    animation: showAboutMe 1s forwards;
+    animation: showAboutMe 1s ease-out;
 
     @include gs.display(large) {
         margin: 0 2rem;
