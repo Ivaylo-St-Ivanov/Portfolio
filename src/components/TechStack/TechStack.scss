@@ -26,6 +26,8 @@
 
     @media (max-height: 30rem) and (orientation: landscape) {
         margin: 0 2rem;
+        top: 3.25rem;
+        overflow: scroll;
     }
 
     &>h3 {

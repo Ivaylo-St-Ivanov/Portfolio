@@ -45,14 +45,10 @@
             overflow: scroll;
             
             &>h3 {
+                text-align: center;
                 color: black;
                 text-shadow: 0px 0px 2px gs.$main-color;
                 margin-bottom: 1rem;
-            }
-    
-            &>p:first-of-type {
-                width: 100%;
-                text-align: left;
             }
             
             &>p {
@@ -61,6 +57,8 @@
                 // overflow-wrap: break-word;
                 font-family: monospace;
                 // tab-size: 4;
+                text-align: left;
+                width: 100%;
             }
         }
     

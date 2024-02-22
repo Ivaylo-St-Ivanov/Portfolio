@@ -1,5 +1,10 @@
 @use './global-styles/main.scss' as gs;
 
+.show {
+    display: flex;
+    animation: showLinks 1.5s forwards;
+}
+
 header {
     position: absolute;
     z-index: 2;
@@ -13,6 +18,26 @@ header {
 
     @include gs.display(small) {
         padding: 1rem 2rem;
+    }
+
+    &>.nav {
+        width: 100%;
+        @include gs.flex(none, center, none);
+
+        &>svg {
+            cursor: pointer;
+            font-size: 2rem;
+            animation: shake 3s cubic-bezier(.36, .07, .19, .97) infinite;
+            transition: all 1s ease;
+
+            &:hover {
+                color: yellow;
+            }
+        }
+    }
+
+    &>div {
+        display: none;
     }
 
     &>div>a {
@@ -58,6 +83,7 @@ aside {
     height: 100vh;
     @include gs.flex(none, none, center);
     font-size: 0.9rem;
+    display: none;
 
     &>span {
         padding: 0.5rem 0;
@@ -97,5 +123,39 @@ footer {
 
     to {
         transform: rotateY(360deg);
+    }
+}
+
+@keyframes showLinks {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
     }
 }

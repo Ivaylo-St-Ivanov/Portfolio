@@ -1,18 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import { IProject } from '../../App';
 import { mouseEvent } from '../../utils/utils';
+import { projectsData } from '../../utils/data';
 
 import './Portfolio.scss';
 
 interface PortfolioProps {
     isPortfolioClick: boolean
     setIsPortfolioClick: React.Dispatch<React.SetStateAction<boolean>>
-    projects: IProject[]
 }
 
-const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioClick, projects }) => {
-    const [isHovered, setIsHovered] = useState<string>('');
+export interface IProject {
+    projectName: string
+    fileType: string
+    file: string
+    description?: string
+    repoLink: string
+    demoLink?: string
+}
+
+const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioClick }) => {
+    const [isHovered, setIsHovered] = useState<number | null>(null);
     const popupRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
@@ -22,7 +30,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
     useEffect(() => {
         if (isHovered) {
             const timer = setTimeout(() => {
-                setIsHovered('');
+                setIsHovered(null);
             }, 3000);
 
             return () => clearTimeout(timer);
@@ -36,21 +44,22 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
                 <p>Here you can see a few of my projects, as well as projects where I have collaborated with other people.</p>
 
                 <div className="container__portfolio-wrapper__projects">
-                    {projects && projects.map(p => (
+                    {projectsData && projectsData.map((p, index) => (
                         <article
-                            key={p.objectId}
+                            key={index}
                             className="container__portfolio-wrapper__projects__box"
                         >
-                            <img src={p.screenshot.url} alt="App screenshot" />
+                            {p.fileType == 'photo' && <img src={p.file} alt="App screenshot" />}
+                            {p.fileType == 'video' && <video src={p.file} autoPlay muted loop></video>}
 
                             <div
-                                onClick={() => setIsHovered(p.objectId)}
-                                onTouchStart={() => setIsHovered(p.objectId)}
-                                onTouchEnd={() => setIsHovered('')}
-                                className={`container__portfolio-wrapper__projects__box__overlay ${isHovered == p.objectId ? 'hovered' : null}`}
+                                onClick={() => setIsHovered(index)}
+                                onTouchStart={() => setIsHovered(index)}
+                                onTouchEnd={() => setIsHovered(null)}
+                                className={`container__portfolio-wrapper__projects__box__overlay ${isHovered == index ? 'hovered' : null}`}
                             >
                                 <h3>{p.projectName}</h3>
-                                <p>{p.techStack}</p>
+                                <p>{p.description}</p>
                                 <div className="container__portfolio-wrapper__projects__box__overlay__buttons">
                                     {p.demoLink && <a href={p.demoLink} target="_blank" rel="noopener noreferrer">Demo</a>}
                                     <a href={p.repoLink} target="_blank" rel="noopener noreferrer">Repo</a>

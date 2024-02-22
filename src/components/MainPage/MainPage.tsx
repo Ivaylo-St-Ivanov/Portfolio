@@ -12,13 +12,13 @@ const MainPage: React.FC<MainPageProps> = ({ toastMessage }) => {
     return (
         <main className="wrapper">
             <div>
-                <img src="/images/photo4.jpeg" alt="Ivaylo's photo" />
+                <img src="/images/photo4.2.jpeg" alt="Ivaylo's photo" />
             </div>
             <div className="wrapper__overlay"></div>
 
             <div className="wrapper__title">
                 <div>
-                    <span>&lt;/ Hi, There &gt;</span>
+                    <span>&lt;/ Hi, there &gt;</span>
                     <h1>I'm Ivo and I'm a</h1>
                     <h2>JS Web Developer</h2>
                 </div>

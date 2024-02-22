@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
-import { myPhotos } from '../../utils/data';
+import { aboutMeText, myPhotos } from '../../utils/data';
 import { mouseEvent } from '../../utils/utils';
 import './AboutMe.scss';
 
 interface AboutMeProps {
     isAboutMeClick: boolean
     setIsAboutMeClick: React.Dispatch<React.SetStateAction<boolean>>
-    aboutMeContent: string
 }
 
-const AboutMe: React.FC<AboutMeProps> = ({ isAboutMeClick, setIsAboutMeClick, aboutMeContent }) => {
+const AboutMe: React.FC<AboutMeProps> = ({ isAboutMeClick, setIsAboutMeClick }) => {
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(0);
     const popupRef = useRef<HTMLElement>(null);
 
@@ -32,9 +31,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ isAboutMeClick, setIsAboutMeClick, ab
             <section ref={popupRef} className="container__about-me__wrapper">
                 <article className="container__about-me__wrapper__content">
                     <h3>About Me</h3>
-                    <p>&nbsp;&nbsp;&nbsp;Hello!</p>
-                    <p>&nbsp;&nbsp;&nbsp;</p>
-                    <p>&nbsp;&nbsp;&nbsp;{aboutMeContent}</p>
+                    {aboutMeText}
                 </article>
 
                 <div className="container__about-me__wrapper__photos">
