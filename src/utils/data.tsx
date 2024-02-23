@@ -17,6 +17,11 @@ export const aboutMeText = (
     </>
 );
 
+const cloudName = import.meta.env.VITE_CLOUD_NAME;
+const bookshelvesVideoPublicId = import.meta.env.VITE_BOOKSHELVES_VIDEO_PUBLIC_ID;
+
+const bookshelvesVideoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/${bookshelvesVideoPublicId}.mp4`;
+
 export const projectsData = [
     {
         projectName: 'ExploreBG',
@@ -53,7 +58,7 @@ export const projectsData = [
     {
         projectName: 'The Old Bookshelves',
         fileType: 'video',
-        file: '/images/bookshelves-video.mp4',
+        file: bookshelvesVideoUrl,
         description: 'Angular, TS, CSS, HTML, Back4App',
         repoLink: 'https://github.com/Ivaylo-St-Ivanov/The-Old-Bookshelves--Angular',
         demoLink: 'https://the-old-bookshelves.github.io/home'

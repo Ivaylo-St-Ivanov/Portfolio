@@ -43,6 +43,7 @@
         &__content {
             @include gs.flex(column, none, center);
             overflow: scroll;
+            scrollbar-width: thin;
             
             &>h3 {
                 text-align: center;

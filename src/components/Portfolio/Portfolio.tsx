@@ -10,15 +10,6 @@ interface PortfolioProps {
     setIsPortfolioClick: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export interface IProject {
-    projectName: string
-    fileType: string
-    file: string
-    description?: string
-    repoLink: string
-    demoLink?: string
-}
-
 const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioClick }) => {
     const [isHovered, setIsHovered] = useState<number | null>(null);
     const popupRef = useRef<HTMLElement>(null);
@@ -50,7 +41,12 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
                             className="container__portfolio-wrapper__projects__box"
                         >
                             {p.fileType == 'photo' && <img src={p.file} alt="App screenshot" />}
-                            {p.fileType == 'video' && <video src={p.file} autoPlay muted loop></video>}
+                            {p.fileType == 'video' && (
+                                <video autoPlay muted loop>
+                                    <source src={p.file} />
+                                    Your browser does not support the video tag.
+                                </video>
+                            )}
 
                             <div
                                 onClick={() => setIsHovered(index)}
