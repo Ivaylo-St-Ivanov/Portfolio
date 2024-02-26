@@ -12,11 +12,35 @@ interface AboutMeProps {
 
 const AboutMe: React.FC<AboutMeProps> = ({ isAboutMeClick, setIsAboutMeClick }) => {
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(0);
+    const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
     const popupRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         mouseEvent(popupRef, isAboutMeClick, setIsAboutMeClick);
     }, [isAboutMeClick, setIsAboutMeClick]);
+
+    useEffect(() => {
+        preloadImages();
+    }, []);
+
+    const preloadImages = () => {
+        const imagePromises: Promise<void>[] = myPhotos.map(photoUrl => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = photoUrl;
+                img.onload = () =>  resolve();
+                img.onerror = (error) =>  reject(error);
+            });
+        });
+
+        Promise.all(imagePromises)
+            .then(() => {
+                setImagesLoaded(true);
+            })
+            .catch((err) => {
+                console.error('Error preloading images:', err);
+            });
+    };
 
     const onClickNextPhoto = () => {
         setCurrentPhotoIndex(index => (index + 1) % myPhotos.length);
@@ -38,7 +62,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ isAboutMeClick, setIsAboutMeClick }) 
                     <IoIosArrowUp onClick={onClickPrevPhoto} />
 
                     <div>
-                        <img src={myPhotos[currentPhotoIndex]} alt="Ivaylo's photo" />
+                        {imagesLoaded && <img src={myPhotos[currentPhotoIndex]} alt="Ivaylo's photo" />}
                     </div>
 
                     <IoIosArrowDown onClick={onClickNextPhoto} />
