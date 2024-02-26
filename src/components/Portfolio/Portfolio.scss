@@ -38,17 +38,63 @@
             max-height: 75vh;
         }
 
+        &__loading {
+            @include gs.flex(none, center, center);
+            height: 70vh;
+            
+            &>span {
+                font-size: 2rem;
+                font-weight: bold;
+                margin-right: 0.25rem;
+                animation: bounce 1.2s ease infinite;
+
+                &:nth-child(2) {
+                    animation-delay: 0.1s;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: 0.2s;
+                }
+
+                &:nth-child(4) {
+                    animation-delay: 0.3s;
+                }
+
+                &:nth-child(5) {
+                    animation-delay: 0.4s;
+                }
+
+                &:nth-child(6) {
+                    animation-delay: 0.5s;
+                }
+
+                &:nth-child(7) {
+                    animation-delay: 0.6s;
+                }
+
+                &:nth-child(8) {
+                    animation-delay: 0.7s;
+                }
+
+                &:nth-child(9) {
+                    animation-delay: 0.8s;
+                }
+            }
+        }
+
         &>h3 {
             color: black;
             text-shadow: 0px 0px 2px gs.$main-color;
             text-align: center;
             margin: 1rem 0 2rem 0;
+            animation: opacityShow 2s ease;
         }
 
         &>p {
             text-align: center;
             margin-bottom: 3rem;
             padding: 0 1rem;
+            animation: opacityShow 2s ease;
         }
 
         &__projects {
@@ -56,6 +102,7 @@
             flex-wrap: wrap;
             justify-content: space-evenly;
             gap: 1rem;
+            animation: opacityShow 2s ease;
 
             @include gs.display(medium) {
                 flex-wrap: unset;
@@ -156,5 +203,27 @@
         opacity: 1;
         transform: translateY(0);
         transition: 0.5s;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.625rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes opacityShow {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
