@@ -15,43 +15,45 @@
         padding: 4rem;
         border-radius: 0.75rem;
         width: 80vw;
+        max-width: 75rem;
         max-height: 80vh;
         display: flex;
         gap: 2rem;
         z-index: 1;
         animation: showAboutMe 1s ease-out;
-    
+
         @include gs.display(large) {
             margin: 0 2rem;
             z-index: 1;
         }
-    
+
         @include gs.display(medium) {
             flex-direction: column;
         }
-    
+
         @include gs.display(small) {
             padding: 2rem;
+            gap: 0.25rem;
         }
-    
+
         @media (max-height: 30rem) and (orientation: landscape) {
             top: 3rem;
             padding: 2.5rem;
             flex-direction: unset;
         }
-    
+
         &__content {
             @include gs.flex(column, none, center);
             overflow: scroll;
-            scrollbar-width: thin;
-            
+            scrollbar-width: none;
+
             &>h3 {
                 text-align: center;
                 color: black;
                 text-shadow: 0px 0px 2px gs.$main-color;
                 margin-bottom: 1rem;
             }
-            
+
             &>p {
                 // white-space: pre-wrap;
                 white-space: pre-line;
@@ -62,32 +64,37 @@
                 width: 100%;
             }
         }
-    
+
         &__photos {
             @include gs.flex(column, space-evenly, center);
-    
+
             &>svg {
                 font-size: 1.5rem;
                 color: lightgreen;
                 margin: 0.5rem 0;
                 cursor: pointer;
                 transition: all 1s ease;
-    
+
                 &:hover {
                     color: gs.$main-color;
                     transform: scale(1.4);
                 }
             }
-    
+
             &>div {
                 width: 12rem;
                 height: 12rem;
-    
+
+                @include gs.display(small) {
+                    width: 9rem;
+                    height: 9rem;
+                }
+
                 @media (max-height: 30rem) and (orientation: landscape) {
                     width: 9rem;
                     height: 9rem;
                 }
-    
+
                 &>img {
                     width: 100%;
                     height: 100%;
@@ -95,7 +102,7 @@
                     border-radius: 0.5rem;
                     box-shadow: 0 0 0.5rem white;
                     transition: all 1.2s ease;
-    
+
                     &:hover {
                         transform: scale(1.2);
                     }

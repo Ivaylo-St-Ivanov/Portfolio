@@ -116,6 +116,10 @@ footer {
     margin-bottom: 0.25rem;
 }
 
+* {
+    scrollbar-width: none;
+}
+
 @keyframes icon-spin {
     from {
         transform: rotateY(0deg);
