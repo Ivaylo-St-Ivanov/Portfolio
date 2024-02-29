@@ -45,16 +45,21 @@ header {
         font-size: 1.5rem;
 
         &>svg {
+            animation: icon-spin 5s infinite;
             transition: all 1.2s ease;
 
             &:hover {
                 color: yellow;
-                transform: rotateY(360deg);
+                // transform: rotateY(360deg);
             }
         }
 
         &:first-of-type {
             margin-right: 1rem;
+        }
+
+        &:last-of-type>svg {
+            animation-delay: 1s;
         }
     }
 

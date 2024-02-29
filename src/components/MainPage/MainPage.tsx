@@ -19,8 +19,25 @@ const MainPage: React.FC<MainPageProps> = ({ toastMessage }) => {
             <div className="wrapper__title">
                 <div>
                     <span>&lt;/ Hi, there &gt;</span>
-                    <h1>I'm Ivo and I'm a</h1>
-                    <h2>JS Web Developer</h2>
+                    <h1>I'm Ivo <span><em>and I'm a</em></span></h1>
+                    <h2>
+                        <span>J</span>
+                        <span>S</span>
+                        <span> </span>
+                        <span>W</span>
+                        <span>e</span>
+                        <span>b</span>
+                        <span> </span>
+                        <span>D</span>
+                        <span>e</span>
+                        <span>v</span>
+                        <span>e</span>
+                        <span>l</span>
+                        <span>o</span>
+                        <span>p</span>
+                        <span>e</span>
+                        <span>r</span>
+                    </h2>
                 </div>
             </div>
 
