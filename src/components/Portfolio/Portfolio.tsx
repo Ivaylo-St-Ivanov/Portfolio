@@ -119,7 +119,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
                                         <p>{p.description}</p>
                                         <div className="container__portfolio-wrapper__projects__box__overlay__buttons">
                                             {p.demoLink && <a href={p.demoLink} target="_blank" rel="noopener noreferrer">Demo</a>}
-                                            <a href={p.repoLink} target="_blank" rel="noopener noreferrer">Repo</a>
+                                            {p.repoLink && <a href={p.repoLink} target="_blank" rel="noopener noreferrer">Repo</a>}
                                         </div>
                                     </div>
                                 </article>

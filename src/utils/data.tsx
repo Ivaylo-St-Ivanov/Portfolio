@@ -28,7 +28,7 @@ export const projectsData = [
         fileType: 'photo',
         file: '/images/everest.jpg',
         description: 'Common project with Boyan Tenev (still working on it).',
-        repoLink: 'https://github.com/Ivaylo-St-Ivanov',
+        repoLink: '',
         demoLink: ''
     },
     {
@@ -51,7 +51,7 @@ export const projectsData = [
         projectName: 'Pets Match',
         fileType: 'photo',
         file: '/images/pets.png',
-        description: 'Team participant (intern) within the Software university\'s “Intern & Team Lead Academy” / Nov 2023 - Feb 2024',
+        description: 'Team participant (intern) within the Software university\'s “Intern & Team Lead Academy”',
         repoLink: 'https://github.com/ConnectingPets/PetsMatch',
         demoLink: ''
     },
@@ -67,7 +67,7 @@ export const projectsData = [
         projectName: 'Infinity Inspiration',
         fileType: 'photo',
         file: '/images/infinity.png',
-        description: 'My first project 😄 - React, JS, CSS, HTML, Back4App',
+        description: 'My first project 😄 - ReactJS, CSS, HTML, Back4App',
         repoLink: 'https://github.com/Ivaylo-St-Ivanov/Infinity-Inspiration--ReactJS/tree/main',
         demoLink: 'https://infinity-inspiration.github.io/'
     }

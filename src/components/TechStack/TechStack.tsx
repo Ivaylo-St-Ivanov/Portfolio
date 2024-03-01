@@ -11,7 +11,7 @@ interface TechStackProps {
 const icons = [
     'https://skillicons.dev/icons?i=js,ts,react,vite,angular',
     'https://skillicons.dev/icons?i=express,nodejs,mongodb,postgres',
-    'https://skillicons.dev/icons?i=html,css,scss,vscode,github'
+    'https://skillicons.dev/icons?i=scss,css,html,vscode,github'
 ];
 
 const TechStack: React.FC<TechStackProps> = ({ isTechStackClick, setIsTechStackClick }) => {

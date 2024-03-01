@@ -11,6 +11,7 @@ interface ContactMeProps {
 
 const ContactMe: React.FC<ContactMeProps> = ({ isContactMeClick, setIsContactMeClick, setToastMessage }) => {
     const [status, setStatus] = useState<string>('send message');
+    const apiUrl = import.meta.env.VITE_API_URL;
     const popupRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
@@ -45,8 +46,8 @@ const ContactMe: React.FC<ContactMeProps> = ({ isContactMeClick, setIsContactMeC
         };
 
         setStatus('Sending...');
-
-        const response = await fetch('http://localhost:5000/contact', {
+                                           
+        const response = await fetch(`${apiUrl}/contact`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
