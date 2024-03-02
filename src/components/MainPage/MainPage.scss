@@ -177,7 +177,7 @@
     }
 
     &__toast-message {
-        position: absolute;
+        position: fixed;
         top: 3rem;
         right: 3rem;
         width: 16rem !important;

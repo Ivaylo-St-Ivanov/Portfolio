@@ -54,7 +54,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ isAboutMeClick, setIsAboutMeClick }) 
         <div className="container">
             <section ref={popupRef} className="container__about-me__wrapper">
                 <article className="container__about-me__wrapper__content">
-                    <h3>About Me</h3>
+                    {/* <h3>About Me</h3> */}
                     {aboutMeText}
                 </article>
 

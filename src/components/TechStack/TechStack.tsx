@@ -49,7 +49,7 @@ const TechStack: React.FC<TechStackProps> = ({ isTechStackClick, setIsTechStackC
         <section ref={popupRef} className="tech-stack__wrapper">
             {!iconsLoaded && <p>Loading...</p>}
             
-            {iconsLoaded && <h3>Skills</h3>}
+            {/* {iconsLoaded && <h3>Skills</h3>} */}
             
             {iconsLoaded && icons.map((i, index) => (
                 <img key={index} src={i} alt="Tech stack icons" />

@@ -10,14 +10,14 @@ interface PortfolioProps {
     setIsPortfolioClick: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-interface IProject {
-    projectName: string,
-    fileType: string,
-    file: string,
-    description: string,
-    repoLink: string,
-    demoLink: string
-}
+// interface IProject {
+//     projectName: string,
+//     fileType: string,
+//     file: string,
+//     description: string,
+//     repoLink: string,
+//     demoLink: string
+// }
 
 const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioClick }) => {
     const [isHovered, setIsHovered] = useState<number | null>(null);
@@ -28,48 +28,71 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
         mouseEvent(popupRef, isPortfolioClick, setIsPortfolioClick);
     }, [isPortfolioClick, setIsPortfolioClick]);
 
-    useEffect(() => {
-        preloadProjects(projectsData);
-    }, []);
+    // const preloadProjects = useCallback((projects: IProject[]) => {
+    //     const projectsPromises: Promise<void>[] = projects.map(p => {
+    //         return new Promise((resolve, reject) => {
+    //             if (p.fileType == 'photo') {
+    //                 const img = new Image();
+    //                 img.src = p.file;
+    //                 img.onload = () => resolve();
+    //                 img.onerror = (error) => reject(error);
+    //             } else if (p.fileType == 'video') {
+    //                 const video = document.createElement('video');
+    //                 video.src = p.file;
+    //                 video.playsInline = true;
+    //                 video.oncanplaythrough = () => resolve();
+    //                 video.onerror = (error) => reject(error);
+    //             }
+    //         });
+    //     });
 
-    const preloadProjects = (projects: IProject[]) => {
-        const projectsPromises: Promise<void>[] = projects.map(p => {
-            return new Promise((resolve, reject) => {
-                if (p.fileType == 'photo') {
-                    const img = new Image();
-                    img.src = p.file;
-                    img.onload = () => resolve();
-                    img.onerror = (error) => reject(error);
-                } else if (p.fileType == 'video') {
-                    const video = document.createElement('video');
-                    video.src = p.file;
-                    video.oncanplaythrough = () => resolve();
-                    video.onerror = (error) => reject(error);
-                }
-            });
+    //     Promise.all(projectsPromises)
+    //         .then(() => {
+    //             setProjectsLoaded(true);
+    //         })
+    //         .catch((err) => {
+    //             console.error('Error preloading projects: ', err);
+    //         });
+    // }, []);
+
+    useEffect(() => {
+        // preloadProjects(projectsData);
+
+        const animationFrame = requestAnimationFrame(() => {
+            const timeout = setTimeout(() => {
+                setProjectsLoaded(true);
+            }, 2500);
+
+            return () => clearTimeout(timeout);
         });
 
-        Promise.all(projectsPromises)
-            .then(() => {
-                const timer = setTimeout(() => {
-                    setProjectsLoaded(true);
-                }, 3000);
-
-                return () => clearTimeout(timer);
-            })
-            .catch((err) => {
-                console.error('Error preloading projects: ', err);
-            });
-    };
+        return () => {
+            if (animationFrame != undefined) {
+                cancelAnimationFrame(animationFrame);
+            }
+        };
+    }, [projectsLoaded]);
 
     useEffect(() => {
-        if (isHovered) {
-            const timer = setTimeout(() => {
-                setIsHovered(null);
-            }, 3000);
+        const handleHoverTimeout = () => {
+            setIsHovered(null);
+        };
 
-            return () => clearTimeout(timer);
+        if (isHovered) {
+            return;
         }
+
+        const animationFrameId = requestAnimationFrame(() => {
+            const timeoutId = setTimeout(handleHoverTimeout, 3000);
+
+            return () => clearTimeout(timeoutId);
+        });
+
+        return () => {
+            if (animationFrameId != undefined) {
+                cancelAnimationFrame(animationFrameId);
+            }
+        };
     }, [isHovered]);
 
     return (
@@ -103,7 +126,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
                                 >
                                     {p.fileType == 'photo' && <img src={p.file} alt="App screenshot" />}
                                     {p.fileType == 'video' && (
-                                        <video autoPlay muted loop>
+                                        <video autoPlay muted loop playsInline >
                                             <source src={p.file} />
                                             Your browser does not support the video tag.
                                         </video>
