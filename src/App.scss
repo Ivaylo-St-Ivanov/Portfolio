@@ -42,7 +42,11 @@ header {
 
     &>div>a {
         color: gs.$main-color;
-        font-size: 1.5rem;
+        font-size: 2rem;
+
+        @include gs.display(xx-large) {
+            font-size: 1.5rem;
+        }
 
         &>svg {
             animation: icon-spin 5s infinite;
@@ -64,12 +68,16 @@ header {
     }
 
     &>div>span {
-        font-size: 0.9rem;
+        font-size: 1.25rem;
         display: inline-block;
         cursor: pointer;
         // transition: transform 750ms;
         // will-change: transform;
         transition: all 1s ease;
+
+        @include gs.display(xx-large) {
+            font-size: 0.9rem;
+        }
 
         &:hover {
             color: yellow;
@@ -87,8 +95,12 @@ aside {
     z-index: 1;
     height: 100vh;
     @include gs.flex(none, none, center);
-    font-size: 0.9rem;
+    font-size: 1.25rem;
     display: none;
+
+    @include gs.display(xx-large) {
+        font-size: 0.9rem;
+    }
 
     &>span {
         padding: 0.5rem 0;
@@ -117,8 +129,12 @@ footer {
     bottom: 0;
     width: 100%;
     @include gs.flex(none, center, none);
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-bottom: 0.25rem;
+
+    @include gs.display(xx-large) {
+        font-size: 0.8rem;
+    }
 }
 
 * {
