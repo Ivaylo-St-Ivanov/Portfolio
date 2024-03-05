@@ -52,7 +52,7 @@ const TechStack: React.FC<TechStackProps> = ({ isTechStackClick, setIsTechStackC
             {/* {iconsLoaded && <h3>Skills</h3>} */}
             
             {iconsLoaded && icons.map((i, index) => (
-                <img key={index} src={i} alt="Tech stack icons" />
+                <img key={index} src={i} width="300" height="60" loading="eager" alt="Tech stack icons" title="Ivaylo Ivanov's tech stack" />
             ))}
         </section>
     );

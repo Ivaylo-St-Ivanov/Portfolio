@@ -62,7 +62,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ isAboutMeClick, setIsAboutMeClick }) 
                     <IoIosArrowUp onClick={onClickPrevPhoto} />
 
                     <div>
-                        {imagesLoaded && <img src={myPhotos[currentPhotoIndex]} alt="Ivaylo's photo" />}
+                        {imagesLoaded && <img src={myPhotos[currentPhotoIndex]} width="100" height="100" loading="eager" alt="Ivaylo's photo" title="About Ivaylo Ivanov" />}
                     </div>
 
                     <IoIosArrowDown onClick={onClickNextPhoto} />

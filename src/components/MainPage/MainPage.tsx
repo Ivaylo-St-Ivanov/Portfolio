@@ -12,7 +12,7 @@ const MainPage: React.FC<MainPageProps> = ({ toastMessage }) => {
     return (
         <main className="wrapper">
             <div>
-                <img src="/images/photo4.2.jpeg" alt="Ivaylo's photo" />
+                <img src="/images/photo4.2.jpeg" width="720" height="650" loading="eager" alt="Ivaylo's photo" title="Ivaylo Ivanov's Portfolio website" />
             </div>
             <div className="wrapper__overlay"></div>
 

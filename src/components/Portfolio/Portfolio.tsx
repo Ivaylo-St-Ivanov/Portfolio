@@ -124,7 +124,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ isPortfolioClick, setIsPortfolioC
                                     key={index}
                                     className="container__portfolio-wrapper__projects__box"
                                 >
-                                    {p.fileType == 'photo' && <img src={p.file} alt="App screenshot" />}
+                                    {p.fileType == 'photo' && <img src={p.file} width="300" height="200" loading="eager" alt="App screenshot" title="Ivaylo Ivanov's projects" />}
                                     {p.fileType == 'video' && (
                                         <video autoPlay muted loop playsInline >
                                             <source src={p.file} />
