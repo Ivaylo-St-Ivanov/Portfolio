@@ -19,12 +19,12 @@
         animation: showTechStack 1s ease-out;
 
         @include gs.display(large) {
-            margin: 0 1rem;
-            z-index: 2;
+            z-index: 3;
         }
 
         @include gs.display(small) {
-            padding: 4rem 1rem;
+            width: 85vw;
+            padding: 1.5rem 1rem;
         }
 
         @media (max-height: 30rem) and (orientation: landscape) {

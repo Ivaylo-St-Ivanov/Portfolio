@@ -18,16 +18,15 @@
         gap: 2rem;
         animation: showContactMe 1s ease-out;
         overflow: scroll;
-        z-index: 1;
+        z-index: 3;
 
         @include gs.display(large) {
             width: 80vw;
         }
 
         @include gs.display(small) {
-            margin: 0 1rem;
-            width: 90vw;
-            padding: 4rem 1rem;
+            width: 85vw;
+            padding: 1.5rem 1rem;
         }
 
         @media (max-height: 30rem) and (orientation: landscape) {
@@ -51,7 +50,7 @@
             }
 
             @include gs.display(small) {
-                width: 80vw;
+                width: 75vw;
             }
 
             &>label {

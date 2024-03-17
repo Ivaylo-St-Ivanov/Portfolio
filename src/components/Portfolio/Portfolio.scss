@@ -17,11 +17,10 @@
         max-height: 80vh;
         animation: showPortfolio 1s ease-out;
         overflow: scroll;
-        z-index: 1;
+        z-index: 3;
 
         @include gs.display(large) {
-            margin: 0 2rem;
-            width: 90vw;
+            width: 85vw;
         }
 
         @include gs.display(medium) {
@@ -29,7 +28,7 @@
         }
 
         @include gs.display(small) {
-            padding: 2rem 1rem;
+            padding: 1.5rem 1rem;
         }
 
         @media (max-height: 34rem) and (orientation: landscape) {
