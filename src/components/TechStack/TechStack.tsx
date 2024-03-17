@@ -9,7 +9,8 @@ interface TechStackProps {
 }
 
 const icons = [
-    'https://skillicons.dev/icons?i=js,ts,react,vite,angular',
+    'https://skillicons.dev/icons?i=js,ts',
+    'https://skillicons.dev/icons?i=react,vite,next,angular',
     'https://skillicons.dev/icons?i=express,nodejs,mongodb,postgres',
     'https://skillicons.dev/icons?i=scss,css,html,vscode,github'
 ];
@@ -31,8 +32,8 @@ const TechStack: React.FC<TechStackProps> = ({ isTechStackClick, setIsTechStackC
             return new Promise((resolve, reject) => {
                 const icon = new Image();
                 icon.src = photoUrl;
-                icon.onload = () =>  resolve();
-                icon.onerror = (error) =>  reject(error);
+                icon.onload = () => resolve();
+                icon.onerror = (error) => reject(error);
             });
         });
 
@@ -46,15 +47,17 @@ const TechStack: React.FC<TechStackProps> = ({ isTechStackClick, setIsTechStackC
     };
 
     return (
-        <section ref={popupRef} className="tech-stack__wrapper">
-            {!iconsLoaded && <p>Loading...</p>}
-            
-            {/* {iconsLoaded && <h3>Skills</h3>} */}
-            
-            {iconsLoaded && icons.map((i, index) => (
-                <img key={index} src={i} width="300" height="60" loading="eager" alt="Tech stack icons" title="Ivaylo Ivanov's tech stack" />
-            ))}
-        </section>
+        <div className="container">
+            <section ref={popupRef} className="container__tech-stack__wrapper">
+                {!iconsLoaded && <p>Loading...</p>}
+
+                {/* {iconsLoaded && <h3>Skills</h3>} */}
+
+                {iconsLoaded && icons.map((i, index) => (
+                    <img key={index} src={i} width="300" height="60" loading="eager" alt="Tech stack icons" title="Ivaylo Ivanov's tech stack" />
+                ))}
+            </section>
+        </div>
     );
 };
 

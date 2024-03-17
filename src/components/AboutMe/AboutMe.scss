@@ -9,7 +9,6 @@
 
     &__about-me__wrapper {
         position: absolute;
-        top: 5rem;
         backdrop-filter: blur(0.5rem);
         box-shadow: 0 0 0.5rem gs.$main-color;
         padding: 4rem;
@@ -24,7 +23,7 @@
 
         @include gs.display(large) {
             margin: 0 2rem;
-            z-index: 1;
+            z-index: 2;
         }
 
         @include gs.display(medium) {
@@ -37,7 +36,6 @@
         }
 
         @media (max-height: 30rem) and (orientation: landscape) {
-            top: 3rem;
             padding: 2.5rem;
             flex-direction: unset;
         }

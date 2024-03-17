@@ -1,94 +1,104 @@
 @use '../../global-styles/main' as gs;
 
-.contact-me__wrapper {
+.container {
     position: absolute;
-    top: 5rem;
-    margin: 0 9rem;
-    backdrop-filter: blur(0.5rem);
-    box-shadow: 0 0 0.5rem gs.$main-color;
-    padding: 4rem;
-    border-radius: 0.75rem;
-    max-height: 80vh;
-    @include gs.flex(column, none, center);
-    gap: 2rem;
-    animation: showContactMe 1s ease-out;
-    overflow: scroll;
-    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    @include gs.flex(none, center, center);
 
-    @include gs.display(medium) {
-        margin: 0 3rem;
-        width: 80vw;
-    }
+    &__contact-me__wrapper {
+        position: absolute;
+        backdrop-filter: blur(0.5rem);
+        box-shadow: 0 0 0.5rem gs.$main-color;
+        padding: 4rem;
+        border-radius: 0.75rem;
+        max-height: 80vh;
+        @include gs.flex(column, none, center);
+        gap: 2rem;
+        animation: showContactMe 1s ease-out;
+        overflow: scroll;
+        z-index: 1;
 
-    @include gs.display(small) {
-        margin: 0 1rem;
-        width: 90vw;
-        padding: 4rem 1rem;
-    }
-
-    @media (max-height: 30rem) and (orientation: landscape) {
-        top: 3rem;
-        padding: 2rem;
-    }
-
-    &>h3 {
-        color: black;
-        text-shadow: 0px 0px 2px gs.$main-color;
-    }
-
-    &>form {
-        @include gs.flex(column, none, none);
-        gap: 0.25rem;
-        width: 50vw;
-
-        @include gs.display(small) {
+        @include gs.display(large) {
             width: 80vw;
         }
 
-        &>label {
-            color: lightgreen;
+        @include gs.display(small) {
+            margin: 0 1rem;
+            width: 90vw;
+            padding: 4rem 1rem;
         }
 
-        &>input,
-        textarea {
-            border: 2px solid gs.$main-color;
-            border-radius: 0.5rem;
-            background: transparent;
-            color: white;
-            padding: 0.1rem 0.5rem;
-
-            &:focus {
-                border: unset;
-            }
+        @media (max-height: 30rem) and (orientation: landscape) {
+            top: 3rem;
+            padding: 2rem;
         }
 
-        &>input {
-            text-align: center;
-        }
-
-        &>textarea {
-            height: 5rem;
-        }
-
-        &>input:last-of-type {
-            border: unset;
-            background-color: lightgreen;
+        &>h3 {
             color: black;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: all 1s ease;
-
-            &:hover {
-                box-shadow: 0 0 0.5rem yellow;
-                transition: 0.7s;
-            }
+            text-shadow: 0px 0px 2px gs.$main-color;
         }
 
-        &>.disabled {
-            opacity: 0.3;
-            pointer-events: none;
+        &>form {
+            @include gs.flex(column, none, none);
+            gap: 0.25rem;
+            width: 50vw;
+
+            
+            @include gs.display(large) {
+                width: 65vw;
+            }
+
+            @include gs.display(small) {
+                width: 80vw;
+            }
+
+            &>label {
+                color: lightgreen;
+            }
+
+            &>input,
+            textarea {
+                border: 2px solid gs.$main-color;
+                border-radius: 0.5rem;
+                background: transparent;
+                color: white;
+                padding: 0.1rem 0.5rem;
+
+                &:focus {
+                    border: unset;
+                }
+            }
+
+            &>input {
+                text-align: center;
+            }
+
+            &>textarea {
+                height: 5rem;
+            }
+
+            &>input:last-of-type {
+                border: unset;
+                background-color: lightgreen;
+                color: black;
+                cursor: pointer;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-top: 1rem;
+                transition: all 1s ease;
+
+                &:hover {
+                    box-shadow: 0 0 0.5rem yellow;
+                    transition: 0.7s;
+                }
+            }
+
+            &>.disabled {
+                opacity: 0.3;
+                pointer-events: none;
+            }
         }
     }
 }

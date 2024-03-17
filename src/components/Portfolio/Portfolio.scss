@@ -9,7 +9,6 @@
 
     &__portfolio-wrapper {
         position: absolute;
-        top: 5rem;
         backdrop-filter: blur(0.5rem);
         box-shadow: 0 0 0.5rem gs.$main-color;
         padding: 2rem;
@@ -34,7 +33,6 @@
         }
 
         @media (max-height: 34rem) and (orientation: landscape) {
-            top: 3.5rem;
             max-height: 75vh;
         }
 

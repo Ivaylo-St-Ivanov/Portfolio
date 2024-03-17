@@ -46,7 +46,7 @@ const ContactMe: React.FC<ContactMeProps> = ({ isContactMeClick, setIsContactMeC
         };
 
         setStatus('Sending...');
-                                           
+
         const response = await fetch(`${apiUrl}/contact`, {
             method: 'POST',
             headers: {
@@ -62,22 +62,24 @@ const ContactMe: React.FC<ContactMeProps> = ({ isContactMeClick, setIsContactMeC
     };
 
     return (
-        <section ref={popupRef} className="contact-me__wrapper">
-            {/* <h3>Contact</h3> */}
+        <div className="container">
+            <section ref={popupRef} className="container__contact-me__wrapper">
+                {/* <h3>Contact</h3> */}
 
-            <form onSubmit={onFormSubmit}>
-                <label htmlFor="name">Name</label>
-                <input type="text" name="name" id="name" placeholder="John Doe" />
-                <label htmlFor="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="john.doe@gmail.com" />
-                <label htmlFor="subject">Subject</label>
-                <input type="text" name="subject" id="subject" />
-                <label htmlFor="message">Message</label>
-                <textarea name="message" id="message" placeholder="......" />
+                <form onSubmit={onFormSubmit}>
+                    <label htmlFor="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="John Doe" />
+                    <label htmlFor="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="john.doe@gmail.com" />
+                    <label htmlFor="subject">Subject</label>
+                    <input type="text" name="subject" id="subject" />
+                    <label htmlFor="message">Message</label>
+                    <textarea name="message" id="message" placeholder="......" />
 
-                <input type="submit" className={status != 'send message' ? 'disabled' : ''} value={status} />
-            </form>
-        </section>
+                    <input type="submit" className={status != 'send message' ? 'disabled' : ''} value={status} />
+                </form>
+            </section>
+        </div>
     );
 };
 
