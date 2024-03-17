@@ -7,6 +7,7 @@ import AboutMe from './components/AboutMe/AboutMe';
 import Portfolio from './components/Portfolio/Portfolio';
 import ContactMe from './components/ContactMe/ContactMe';
 import TechStack from './components/TechStack/TechStack';
+import Rolling from './components/Rolling/Rolling';
 import './App.scss';
 
 function App() {
@@ -45,11 +46,17 @@ function App() {
             </header>
 
             <aside className={onClickNavBar ? 'show' : ''}>
-                <span onClick={() => setIsContactMeClick(true)}><MdArrowBackIos /> Contact Me</span>
+                <div onClick={() => setIsContactMeClick(true)} className="aside-link">
+                    <MdArrowBackIos />&nbsp;
+                    <Rolling title='Contact&nbsp;Me' />
+                </div>
             </aside>
 
             <aside className={onClickNavBar ? 'show' : ''}>
-                <span onClick={() => setIsTechStackClick(true)}>Tech Stack <MdArrowForwardIos /></span>
+                <div onClick={() => setIsTechStackClick(true)} className="aside-link">
+                    <Rolling title='Tech&nbsp;Stack' />
+                    &nbsp;<MdArrowForwardIos />
+                </div>
             </aside>
 
             <MainPage toastMessage={toastMessage} />
