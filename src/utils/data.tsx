@@ -19,16 +19,18 @@ export const aboutMeText = (
 
 const cloudName = import.meta.env.VITE_CLOUD_NAME;
 const bookshelvesVideoPublicId = import.meta.env.VITE_BOOKSHELVES_VIDEO_PUBLIC_ID;
+const exploreBGVideoPublicId = import.meta.env.VITE_EXPLORE_BG_VIDEO_PUBLIC_ID;
 
 const bookshelvesVideoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/${bookshelvesVideoPublicId}.mp4`;
+const exploreBGVideoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/${exploreBGVideoPublicId}.mp4`;
 
 export const projectsData = [
     {
-        projectName: 'ExploreBG',
-        fileType: 'photo',
-        file: '/images/everest.jpg',
-        description: 'Common project with Boyan Tenev (still working on it).',
-        repoLink: '',
+        projectName: 'Explore BG',
+        fileType: 'video',
+        file: exploreBGVideoUrl,
+        description: 'Next.js, TS, SCSS / still working on it /',
+        repoLink: 'https://github.com/ExploreBG/ExploreBG',
         demoLink: ''
     },
     {
